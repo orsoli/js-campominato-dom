@@ -7,13 +7,13 @@
  */
 const createElement = type => document.createElement(type) // Create new element
 
+// Add class funtion expect 2 param element and nameclass
 /**
  * 
  * @param {*} element 
  * @param {*} nameClass 
  * @returns 
  */
-// Add class funtion expect 2 param element and nameclass
 const addClass = (element, nameClass) => element.classList.add(nameClass) 
 
 /**
@@ -22,6 +22,16 @@ const addClass = (element, nameClass) => element.classList.add(nameClass)
  * @returns {string}  // Return a string
  */
 const getSelected = elementName => elementName.value // Create a function to chek selected option
+
+// Create a function to check if cell is clicked
+/**
+ * 
+ * @param {*} cellElement 
+ * @returns 
+ */
+const isClicked = (cellElement) => {
+    if(cellElement.classList.contains('unclickable') || cellElement.classList.contains('bomb-cell')) return true;
+}
 
 // Retrieve interested element from DOM
 const formElement = document.getElementById('play-form')
@@ -68,7 +78,7 @@ formElement.addEventListener('submit',(e) => {
     const gridSize = row * col // The size of grid in total number
 
     const bombs = [] // Create an array variable to ave the 16 different numbers
-    // Create while loop to generate 16 times random number
+    // Create while loop to generate number of bomb times random number
     while(bombs.length < NumberOfBombs){
         const randomNumber = Math.floor(Math.random() * gridSize) + 1 // Create random nr from 1 to gridSize
         // Check if random number is not included to bombs array and push it
@@ -81,20 +91,21 @@ formElement.addEventListener('submit',(e) => {
         const cellElement = createElement('div')// Create div element
         addClass(cellElement,"cell") // Add class='cell' in this div element already created
         gridElement.appendChild(cellElement) // Append like child new div in the grid element in DOM
-        cellElement.innerText = i // Add content in the element cell
+        cellElement.dataset.number = i // Add i in the dataset element
+        
         // Add a click event of cell element
         cellElement.addEventListener('click',(e) => {
             // Create the message variable using in end game case
             let message;
             // Create max score variable
             const maxScore = gridSize - NumberOfBombs
-            // Chek if cell element contains class'unclickable' and 'bomb-cell' this become unclickable
-            if(cellElement.classList.contains('unclickable') || cellElement.classList.contains('bomb-cell')) return;
-            // Check if in array bombs is included the cell innerTex
-            if(bombs.includes(parseInt(e.target.innerText))) {
+            // Call back isClicked function to check and stop re-click
+            if(isClicked(cellElement)) return
+            // Check if in array bombs is included the dataset number
+            if(bombs.includes(parseInt(e.target.dataset.number))) {
                 addClass(cellElement,"bomb-cell") // Add  bomb-cell class in cell Element
                 message = 'The game is over. Your score:'
-                gridElement.innerText = `${message} ${score}`
+                // gridElement.innerText = `${message} ${score}`
             }else{ 
                 addClass(cellElement,"unclickable") // Add unclickable class in cellElment
                 scoreElement.innerText = ++score // Insert  increased score in score element in DOM like inner text

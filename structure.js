@@ -52,4 +52,7 @@
     we need to understand if it ended because a bomb was clicked or because the user reached the maximum score
     In any case, we must print the score on the page and display the appropriate message in case of victory or defeat.
             - Instead of alert already created print in DOM inside gridElement the mesagge
+
+    SUPERBONUS - Color all bomb cells when the game ends.
+            - Instead innerText we use dataset.number in cell element to clear the number in page and get from dataset
 */  
