@@ -39,4 +39,12 @@
             - If yes add in cell element bomb-cell class
             - Else add unclickable class in cell element
 
-*/
+    M4 - When the user clicks on a cell, and it’s not a bomb, 
+         We need to check if the increased score has reached the maximum score 
+         because in that case, the game ends. 
+         We then collect the score and write an appropriate message.
+            - Create a variable called numberofbombs to save quantity of bombs
+            - Create a variable called maxScore to save the maxi of score we have collect
+            - In if statement alrady created to check the bomb create a if statement to check if the maxScore == score
+            - Alert the mssage and score
+*/  

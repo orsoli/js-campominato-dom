@@ -38,10 +38,13 @@ formElement.addEventListener('submit',(e) => {
 
     // Retrieve score element for DOM
     const scoreElement = document.getElementById('score')
-    let score = 0; // Create a variable initialized
+
+    let score = 0; // Create a variable initialized for score
+    const NumberOfBombs = 16; // Create a variable 
+
     scoreElement.innerText = score // Print the initialized score in DOM
-    gridElement.innerHTML = '' // Clear the elements inside the grid element to ristart the game
     btnElement.innerText = 'Replay' // Ghange the btn inner text after one click
+    gridElement.innerHTML = '' // Clear the elements inside the grid element to ristart the game
 
     // Check the option and change variable
     switch(getSelected(selectedElement)){
@@ -66,7 +69,7 @@ formElement.addEventListener('submit',(e) => {
 
     const bombs = [] // Create an array variable to ave the 16 different numbers
     // Create while loop to generate 16 times random number
-    while(bombs.length < 16){
+    while(bombs.length < NumberOfBombs){
         const randomNumber = Math.floor(Math.random() * gridSize) + 1 // Create random nr from 1 to gridSize
         // Check if random number is not included to bombs array and push it
         if(!bombs.includes(randomNumber)) bombs.push(randomNumber) 
@@ -81,15 +84,21 @@ formElement.addEventListener('submit',(e) => {
         cellElement.innerText = i // Add content in the element cell
         // Add a click event of cell element
         cellElement.addEventListener('click',(e) => {
+            // Create the message variable using in end game case
+            let message;
+            // Create max score variable
+            const maxScore = gridSize - NumberOfBombs
             // Chek if cell element contains class'unclickable' and 'bomb-cell' this become unclickable
             if(cellElement.classList.contains('unclickable') || cellElement.classList.contains('bomb-cell')) return;
             // Check if in array bombs is included the cell innerTex
             if(bombs.includes(parseInt(e.target.innerText))) {
                 addClass(cellElement,"bomb-cell") // Add  bomb-cell class in cell Element
-                console.log(`The game is over. Your score: ${score}`) // Print in console the message
+                message = 'The game is over. Your score:'
             }else{ 
                 addClass(cellElement,"unclickable") // Add unclickable class in cellElment
                 scoreElement.innerText = ++score // Insert  increased score in score element in DOM like inner text
+                message = 'End Game. Your score:'
+                if(maxScore === score) alert(`${message} ${score}`)
             }
         })
 
