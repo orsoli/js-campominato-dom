@@ -21,10 +21,10 @@ main{
     margin: 0 auto;
 }
 
-.grid .unclicked{
+.grid .unclickable{
     cursor: not-allowed;
     color: white;
-    background-color: lightblue;
+    background-color: dodgerblue;
 
 }
 
@@ -47,4 +47,10 @@ main{
     justify-content: center;
     align-items: center;
     cursor: pointer;
+}
+
+.bomb-cell{
+    background-color: red;
+    background-image: url(./img/bomb.png);
+    background-size: contain;
 }
