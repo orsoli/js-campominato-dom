@@ -21,6 +21,15 @@
             - Print in page the score
             - Create in css a class unclicked to do the cell not allowed click
             - In JS add this cla in cell element
+
+    M2 - Generate 16 random numbers from 1 to max of cell. Print in console to insure they are correct
+            Inside click play btn event
+            - Create an array variable called bombs to save 16 diferent random numbers
+            - Create a loop to generate 16 times a number
+            - Generate a number
+            - Check if this number is not included in the bombs array and add it in this array
+            - Print in console bombs array
+
 */
 
 // ---  Preparation Phase
@@ -32,14 +41,14 @@
  */
 const createElement = type => document.createElement(type) // Create new element
 
-
 /**
  * 
  * @param {*} element 
  * @param {*} nameClass 
  * @returns 
  */
-const addClass = (element, nameClass) => element.classList.add(nameClass) // Add class funtion expect 2 param element and nameclass
+// Add class funtion expect 2 param element and nameclass
+const addClass = (element, nameClass) => element.classList.add(nameClass) 
 
 /**
  * 
@@ -96,10 +105,24 @@ formElement.addEventListener('submit',(e) => {
         cellElement.addEventListener('click',() => {
             // Retrieve score element for DOM
             const scoreElement = document.getElementById('score')
-            ++score // Increant score
-            scoreElement.innerText = score // Insert the the content of cell in theis element like inner text
-            addClass(cellElement,"unclicked") // Add bg-blue class
+            // Chek if is clicked to stop counting score
+            if(cellElement.classList.contains('unclicked')) return;
+
+            addClass(cellElement,"unclicked") // Add unclicked class
+            scoreElement.innerText = ++score // Insert the the content of cell in theis element like inner text
+            
+
         })
 
     }
+
+    const bombs = [] // Create an array variable to ave the 16 different numbers
+    // Create while loop to generate 16 times random number
+    while(bombs.length < 16){
+        const randomNumber = Math.floor(Math.random() * gridSize) + 1 // Create random nr from 1 to gridSize
+        // Check if random number is not included to bombs array and push it
+        if(!bombs.includes(randomNumber)) bombs.push(randomNumber) 
+        }
+    console.log(bombs) // Print in console bombs array to insure they are correct
+    
 })
