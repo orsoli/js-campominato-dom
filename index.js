@@ -94,11 +94,12 @@ formElement.addEventListener('submit',(e) => {
             if(bombs.includes(parseInt(e.target.innerText))) {
                 addClass(cellElement,"bomb-cell") // Add  bomb-cell class in cell Element
                 message = 'The game is over. Your score:'
+                gridElement.innerText = `${message} ${score}`
             }else{ 
                 addClass(cellElement,"unclickable") // Add unclickable class in cellElment
                 scoreElement.innerText = ++score // Insert  increased score in score element in DOM like inner text
-                message = 'End Game. Your score:'
-                if(maxScore === score) alert(`${message} ${score}`)
+                message = 'WINNER. Your score:'
+                if(maxScore === score) gridElement.innerText = `${message} ${score}`
             }
         })
 
