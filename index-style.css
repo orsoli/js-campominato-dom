@@ -1,0 +1,59 @@
+/* Reset  */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Generics  */
+main{
+    background-color: #7FFFD4;
+}
+
+/* Utils  */
+.container {
+    width: 70vw;
+    margin: 0 auto;
+}
+
+
+/* Grid  */
+.grid{
+    width: 600px;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.easy-cell{
+    width: calc(100%/7);
+    height: calc(100%/7);
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.normal-cell{
+    width: calc(100%/9);
+    height: calc(100%/9);
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.hard-cell{
+    width: calc(100%/10);
+    height: calc(100%/10);
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.bg-blue{
+    color: white;
+    background-color: blue;
+}
