@@ -1,9 +1,14 @@
+:root {
+    --cell-per-row : 10;
+}
+
 /* Reset  */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 
 /* Generics  */
 main{
@@ -16,6 +21,13 @@ main{
     margin: 0 auto;
 }
 
+.grid .unclicked{
+    cursor: not-allowed;
+    color: white;
+    background-color: lightblue;
+
+}
+
 
 /* Grid  */
 .grid{
@@ -23,37 +35,16 @@ main{
     height: 600px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
-.easy-cell{
-    width: calc(100%/10);
-    height: calc(100%/10);
+.cell{
+    width: calc(100%/var(--cell-per-row));
+    height: calc(100%/var(--cell-per-row));
     border: 1px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-}
-.normal-cell{
-    width: calc(100%/9);
-    height: calc(100%/9);
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-.hard-cell{
-    width: calc(100%/7);
-    height: calc(100%/7);
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-
-.bg-blue{
-    color: white;
-    background-color: blue;
 }

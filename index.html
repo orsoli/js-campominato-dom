@@ -34,22 +34,26 @@
                 </a>
                 <h1 class="m-0">Campo Minato</h1>
             </div>
-        <form class="d-flex" id="play-form">
-            <span class="form-control border-0">Difficulty:</span>
-            <select class="me-5 form-control" id="level">
-                <option value="easy">Easy</option>
-                <option value="normal" selected>Normal</option>
-                <option value="hard">Hard</option>
-            </select>
-            <button class="btn btn-outline-secondary" type="submit" id="play-btn">Play</button>
-        </form>
+            <div class="score">
+                Score : <span id="score">0</span>
+            </div>
+            <form class="d-flex" id="play-form">
+                <span class="form-control border-0">Difficulty:</span>
+                <select class="me-5 form-control" id="level">
+                    <option value="easy">Easy</option>
+                    <option value="normal" selected>Normal</option>
+                    <option value="hard">Hard</option>
+                </select>
+                <button class="btn btn-outline-secondary" type="submit" id="play-btn">Play</button>
+            </form>
         </div>
     </nav>
 </header>
 <!-- Main  -->
 <main>
 <div class="container">
-    <div class="grid py-3" id="grid">
+    <div class="grid  py-3" id="grid">
+        <h3>Choose difficulty level and play the game</h3>
     </div>
 </div>
 </main>
